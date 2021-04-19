@@ -23,7 +23,7 @@ Chạy bằng pytest (sử dụng parameterized) theo thao tác sau:
 ![image](https://user-images.githubusercontent.com/46483616/115174585-b3dc7a00-a0f3-11eb-8ab2-d8cf2cb17d14.png)
 
 **3. Chạy song song 2 browsers, mỗi browser 5 testcases**
-*Chạy 4 testcases mục 11 và 1 testcases mục 12
+Chạy 4 testcases mục 11 và 1 testcases mục 12
 Chạy bằng pytest (sử dụng parameterized) theo thao tác sau:
 - B1 : Sử dụng Terminal trong Pycharm để chạy lệnh
 - B2 : Chạy pytest đối với file test_productDetail_parallel bằng câu lệnh "pytest -n 2 testCases/package/test_productDetail_parallel.py"
