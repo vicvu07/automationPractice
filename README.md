@@ -1,11 +1,13 @@
-# automationPractice
-Training automation testing
+# AutomationPractice
+*Training automation testing
 
-Author : Vu Quang Hiep - HiepVQ
+*Author : Vu Quang Hiep - HiepVQ
 
-Project : Training Automation Test
+*Project : Training Automation Test
 
 Date : 19/04/2021
+
+_____________________________________________________________ REPORT _______________________________________________________________________________
 1. Chạy test từ dòng lệnh từng testsuite, & chạy tổng thể toàn bộ testcases để đưa ra báo cáo:
 - Chạy unittest đối với từng testcase, và được viết theo testsuite, các testsuite được để trong thư mục: ..\automationPractice\testCases\package
 - Chạy toàn bộ testcases bằng cách chạy file allTestSuites.py theo đường dẫn: ..\automationPractice\testCases\testSuites\allTestSuites.py
@@ -24,12 +26,18 @@ Chạy bằng pytest (sử dụng parameterized) theo thao tác sau:
 
 4. Test trên 2 máy song song sử dụng Selenium Grid
 Thực hiện các thao tác như sau:
-- Cài đặt JDK 8 
-- Tải tập tin selenium-server-standalone-3.141.59.jar
-- Chạy câu lệnh "java -jar selenium-server-standalone-3.141.59.jar -role hub" để thiết lập hub trên máy chính
+- B1: Cài đặt JDK 8 
+- B2: Tải tập tin selenium-server-standalone-3.141.59.jar
+- B3: Chạy câu lệnh "java -jar selenium-server-standalone-3.141.59.jar -role hub" để thiết lập hub trên máy chính
 ![image](https://user-images.githubusercontent.com/46483616/115175336-023e4880-a0f5-11eb-9763-8c04284dcf37.png)
-- Chạy câu lệnh "java -Dwebdriver.chrome.driver=C:\Drivers\chromedriver_win32\chromedriver.exe -jar selenium-server-standalone-3.141.59.jar -role node -hub http://192.168.137.1:4444/grid/register/"
+- B4: Chạy câu lệnh "java -Dwebdriver.chrome.driver=C:\Drivers\chromedriver_win32\chromedriver.exe -jar selenium-server-standalone-3.141.59.jar -role node -hub http://192.168.137.1:4444/grid/register/" để thiết lập node trên máy phụ (máy chạy test case)
 ![image](https://user-images.githubusercontent.com/46483616/115175760-d2dc0b80-a0f5-11eb-8842-618de5b9cb34.png)
- 
+- B5: Thay đổi thiết lập webdriver tại file test script như sau:
+"self.driver = webdriver.Remote(
+                command_executor='http://192.168.137.1:4444/wd/hub',
+                desired_capabilities={'browserName': 'chrome', 'javascriptEnabled': True})"
+- B6: Chạy file test_productDetail_otherwindows.py theo đường dẫn automationPractice\testCases\package\test_productDetail_otherwindows.py trên máy chính.
+
+5. Test trên
 
 
