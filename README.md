@@ -11,7 +11,8 @@ _____________________________________________________________ REPORT ___________
 1. Chạy test từ dòng lệnh từng testsuite, & chạy tổng thể toàn bộ testcases để đưa ra báo cáo:
 - Chạy unittest đối với từng testcase, và được viết theo testsuite, các testsuite được để trong thư mục: ..\automationPractice\testCases\package
 - Chạy toàn bộ testcases bằng cách chạy file allTestSuites.py theo đường dẫn: ..\automationPractice\testCases\testSuites\allTestSuites.py
-> Output:
+>Output:
+
 ![screencapture-file-C-Users-Quang-Hiep-Documents-Lotus-Quality-Assurance-Lotus-Quality-Assurance-LQA-Selenium-Python-Training-Course-Selenium-LQA-automationPractice-reports-TestResults-createAccountTest-home-pa](https://user-images.githubusercontent.com/46483616/115176647-b3de7900-a0f7-11eb-99ed-b7562350beba.png)
 
 
