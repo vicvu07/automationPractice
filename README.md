@@ -16,6 +16,7 @@
 
 
 **2. Chạy trên 2 browsers Firefox và Chrome:**
+
 Chạy bằng pytest (sử dụng parameterized) theo thao tác sau:
 - B1 : Sử dụng Terminal trong Pycharm để chạy lệnh
 - B2 : Chạy pytest đối với file test_productDetail_parallel bằng câu lệnh "pytest testCases/package/test_productDetail_parallel.py"
