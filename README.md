@@ -1,13 +1,12 @@
-# AutomationPractice
-                                                 **Report Training automation testing**
-
+                                                            # AutomationPractice
+                                                 
 *Author : Vu Quang Hiep - HiepVQ
 
 *Project : Training Automation Test
 
-Date : 19/04/2021
+*Date : 19/04/2021
 
-_____________________________________________________________ REPORT _______________________________________________________________________________
+                                                      **Report Training automation testing**
 
 **1. Chạy test từ dòng lệnh từng testsuite, & chạy tổng thể toàn bộ testcases để đưa ra báo cáo:**
 - Chạy unittest đối với từng testcase, và được viết theo testsuite, các testsuite được để trong thư mục: ..\automationPractice\testCases\package
