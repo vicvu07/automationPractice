@@ -1,5 +1,5 @@
 # AutomationPractice
-*Training automation testing
+                                                 **Report Training automation testing**
 
 *Author : Vu Quang Hiep - HiepVQ
 
@@ -8,6 +8,7 @@
 Date : 19/04/2021
 
 _____________________________________________________________ REPORT _______________________________________________________________________________
+
 **1. Chạy test từ dòng lệnh từng testsuite, & chạy tổng thể toàn bộ testcases để đưa ra báo cáo:**
 - Chạy unittest đối với từng testcase, và được viết theo testsuite, các testsuite được để trong thư mục: ..\automationPractice\testCases\package
 - Chạy toàn bộ testcases bằng cách chạy file allTestSuites.py theo đường dẫn: ..\automationPractice\testCases\testSuites\allTestSuites.py
