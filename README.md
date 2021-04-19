@@ -24,6 +24,7 @@ Chạy bằng pytest (sử dụng parameterized) theo thao tác sau:
 ![image](https://user-images.githubusercontent.com/46483616/115174585-b3dc7a00-a0f3-11eb-8ab2-d8cf2cb17d14.png)
 
 **3. Chạy song song 2 browsers, mỗi browser 5 testcases**
+
 Chạy 4 testcases mục 11 và 1 testcases mục 12
 Chạy bằng pytest (sử dụng parameterized) theo thao tác sau:
 - B1 : Sử dụng Terminal trong Pycharm để chạy lệnh
@@ -32,6 +33,7 @@ Chạy bằng pytest (sử dụng parameterized) theo thao tác sau:
 >![image](https://user-images.githubusercontent.com/46483616/115174548-a45d3100-a0f3-11eb-983a-2d77c32d8fbb.png)
 
 **4. Test trên 2 máy song song sử dụng Selenium Grid**
+
 Thực hiện các thao tác như sau:
 - B1: Cài đặt JDK 8 
 - B2: Tải tập tin selenium-server-standalone-3.141.59.jar
