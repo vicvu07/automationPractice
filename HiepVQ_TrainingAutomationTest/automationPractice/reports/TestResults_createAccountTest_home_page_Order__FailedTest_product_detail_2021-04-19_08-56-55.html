@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Testing Website Result</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="text-capitalize">Testing Website Result</h2>
+                <p class='attribute'><strong>Start Time: </strong>2021-04-19 08:56:55</p>
+                <p class='attribute'><strong>Duration: </strong>625.54 s</p>
+                <p class='attribute'><strong>Summary: </strong>Total: 16, Pass: 8, Fail: 1, Error: 7</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10 col-md-10">
+                <table class='table table-hover table-responsive'>
+                    <thead>
+                        <tr>
+                            <th>testCases.package.test_CreateAccount.createAccountTest</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_CreateAccount_Error</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_CreateAccount_Successfull</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                Total: 2, Pass: 2 -- Duration: 52.26 s
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10 col-md-10">
+                <table class='table table-hover table-responsive'>
+                    <thead>
+                        <tr>
+                            <th>testCases.package.test_homePage.home_page</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_NewsletterSubmit</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_ProductPrice</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_Search_fail</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr class='danger'>
+                            <td class="col-xs-10">test_SuggestKeyWord</td>
+                            <td class="col-xs-1">
+                                <span class="label label-danger" style="display:block;width:40px;">Fail</span>
+                            </td>
+                            <td class="col-xs-1">
+                                <button class="btn btn-default btn-xs">View</button>
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="col-xs-9" colspan="3"><p style="color:maroon;">AssertionError: 'dress' not found in '' : Suggest keyword is not suitable!</p><p style="color:maroon;">Traceback (most recent call last):
+  File "C:\Users\Quang Hiep\Documents\Lotus Quality Assurance\Lotus Quality Assurance\LQA- Selenium_Python\Training Course _Selenium _LQA\automationPractice\testCases\package\test_homePage.py", line 57, in test_SuggestKeyWord
+    self.assertIn(self.keyword, suggestKeyword.lower(), 'Suggest keyword is not suitable!')
+AssertionError: 'dress' not found in '' : Suggest keyword is not suitable!
+</p>
+                            </td>
+                        </tr>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_SuitableProductDetail</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr class='warning'>
+                            <td class="col-xs-10">test_TypeSearchKeyWord</td>
+                            <td class="col-xs-1">
+                                <span class="label label-warning" style="display:block;width:40px;">Error</span>
+                            </td>
+                            <td class="col-xs-1">
+                                <button class="btn btn-default btn-xs">View</button>
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="col-xs-9" colspan="3"><p style="color:maroon;">WebDriverException: Message: chrome not reachable
+  (Session info: chrome=90.0.4430.72)
+</p><p style="color:maroon;">Traceback (most recent call last):
+  File "C:\Users\Quang Hiep\Documents\Lotus Quality Assurance\Lotus Quality Assurance\LQA- Selenium_Python\Training Course _Selenium _LQA\automationPractice\testCases\package\test_homePage.py", line 49, in test_TypeSearchKeyWord
+    self.assertEqual(self.placehoder, homePage.getSearchPlaceHolder(), 'Placeholder is not match')
+  File "C:\Users\Quang Hiep\Documents\Lotus Quality Assurance\Lotus Quality Assurance\LQA- Selenium_Python\Training Course _Selenium _LQA\automationPractice\pageObjects\homePage.py", line 37, in getSearchPlaceHolder
+    return self.driver.find_element_by_id(self.search_id).get_attribute('placeholder')
+  File "C:\Users\Quang Hiep\AppData\Local\Programs\Python\Python39\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 360, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "C:\Users\Quang Hiep\AppData\Local\Programs\Python\Python39\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Quang Hiep\AppData\Local\Programs\Python\Python39\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Quang Hiep\AppData\Local\Programs\Python\Python39\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: chrome not reachable
+  (Session info: chrome=90.0.4430.72)
+
+</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                Total: 6, Pass: 4, Fail: 1, Error: 1 -- Duration: 214.19 s
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10 col-md-10">
+                <table class='table table-hover table-responsive'>
+                    <thead>
+                        <tr>
+                            <th>testCases.package.test_Order.Order</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_change_and_order_successfully</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr class='warning'>
+                            <td class="col-xs-10">test_order_successfully</td>
+                            <td class="col-xs-1">
+                                <span class="label label-warning" style="display:block;width:40px;">Error</span>
+                            </td>
+                            <td class="col-xs-1">
+                                <button class="btn btn-default btn-xs">View</button>
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="col-xs-9" colspan="3"><p style="color:maroon;">NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":"[id="email"]"}
+  (Session info: chrome=90.0.4430.72)
+</p><p style="color:maroon;">Traceback (most recent call last):
+  File "C:\Users\Quang Hiep\Documents\Lotus Quality Assurance\Lotus Quality Assurance\LQA- Selenium_Python\Training Course _Selenium _LQA\automationPractice\testCases\package\test_Order.py", line 47, in test_order_successfully
+    completeMessage = checkOutPage.proceed_to_checkout(self.emailSignIn, self.passwordSignIn)
+  File "C:\Users\Quang Hiep\Documents\Lotus Quality Assurance\Lotus Quality Assurance\LQA- Selenium_Python\Training Course _Selenium _LQA\automationPractice\pageObjects\checkOutPage.py", line 80, in proceed_to_checkout
+    loginPage.sign_in(emailSignIn, passwordSignIn)
+  File "C:\Users\Quang Hiep\Documents\Lotus Quality Assurance\Lotus Quality Assurance\LQA- Selenium_Python\Training Course _Selenium _LQA\automationPractice\pageObjects\loginPage.py", line 22, in sign_in
+    self.driver.find_element_by_id(self.email_signIn_id).send_keys(emailSignIn)
+  File "C:\Users\Quang Hiep\AppData\Local\Programs\Python\Python39\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 360, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "C:\Users\Quang Hiep\AppData\Local\Programs\Python\Python39\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Quang Hiep\AppData\Local\Programs\Python\Python39\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Quang Hiep\AppData\Local\Programs\Python\Python39\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":"[id="email"]"}
+  (Session info: chrome=90.0.4430.72)
+
+</p>
+                            </td>
+                        </tr>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_promotion_product</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                Total: 3, Pass: 2, Error: 1 -- Duration: 256.98 s
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10 col-md-10">
+                <table class='table table-hover table-responsive'>
+                    <thead>
+                        <tr>
+                            <th>unittest.loader._FailedTest</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class='warning'>
+                            <td class="col-xs-10">contact_us</td>
+                            <td class="col-xs-1">
+                                <span class="label label-warning" style="display:block;width:40px;">Error</span>
+                            </td>
+                            <td class="col-xs-1">
+                                <button class="btn btn-default btn-xs">View</button>
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="col-xs-9" colspan="3"><p style="color:maroon;">AttributeError: module 'testCases.package.test_ContactUs' has no attribute 'contact_us'</p><p style="color:maroon;">AttributeError: module 'testCases.package.test_ContactUs' has no attribute 'contact_us'
+</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                Total: 1, Pass: 0, Error: 1 -- Duration: 8 ms
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10 col-md-10">
+                <table class='table table-hover table-responsive'>
+                    <thead>
+                        <tr>
+                            <th>testCases.package.test_productDetail.product_detail</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class='warning'>
+                            <td class="col-xs-10">test_send_to_a_friend</td>
+                            <td class="col-xs-1">
+                                <span class="label label-warning" style="display:block;width:40px;">Error</span>
+                            </td>
+                            <td class="col-xs-1">
+                                <button class="btn btn-default btn-xs">View</button>
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="col-xs-9" colspan="3"><p style="color:maroon;">NoSuchElementException: Message: Unable to locate element: [id="send_friend_button"]
+</p><p style="color:maroon;">Traceback (most recent call last):
+  File "C:\Users\Quang Hiep\Documents\Lotus Quality Assurance\Lotus Quality Assurance\LQA- Selenium_Python\Training Course _Selenium _LQA\automationPractice\testCases\package\test_productDetail.py", line 132, in test_send_to_a_friend
+    productDetailPage.click_send_to_a_friend()
+  File "C:\Users\Quang Hiep\Documents\Lotus Quality Assurance\Lotus Quality Assurance\LQA- Selenium_Python\Training Course _Selenium _LQA\automationPractice\pageObjects\productDetailPage.py", line 132, in click_send_to_a_friend
+    self.driver.find_element_by_id(self.send_to_a_friend_id).click()
+  File "C:\Users\Quang Hiep\AppData\Local\Programs\Python\Python39\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 360, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "C:\Users\Quang Hiep\AppData\Local\Programs\Python\Python39\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Quang Hiep\AppData\Local\Programs\Python\Python39\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Quang Hiep\AppData\Local\Programs\Python\Python39\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: Unable to locate element: [id="send_friend_button"]
+
+</p>
+                            </td>
+                        </tr>
+                        <tr class='warning'>
+                            <td class="col-xs-10">test_share_to_twitter</td>
+                            <td class="col-xs-1">
+                                <span class="label label-warning" style="display:block;width:40px;">Error</span>
+                            </td>
+                            <td class="col-xs-1">
+                                <button class="btn btn-default btn-xs">View</button>
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="col-xs-9" colspan="3"><p style="color:maroon;">NoSuchElementException: Message: Unable to locate element: //*[@id="center_column"]/div/div/div[3]/p[7]/button[@class="btn btn-default btn-twitter"]
+</p><p style="color:maroon;">Traceback (most recent call last):
+  File "C:\Users\Quang Hiep\Documents\Lotus Quality Assurance\Lotus Quality Assurance\LQA- Selenium_Python\Training Course _Selenium _LQA\automationPractice\testCases\package\test_productDetail.py", line 99, in test_share_to_twitter
+    productDetailPage.click_tweet()
+  File "C:\Users\Quang Hiep\Documents\Lotus Quality Assurance\Lotus Quality Assurance\LQA- Selenium_Python\Training Course _Selenium _LQA\automationPractice\pageObjects\productDetailPage.py", line 102, in click_tweet
+    self.driver.find_element_by_xpath(self.tweet_xpath).click()
+  File "C:\Users\Quang Hiep\AppData\Local\Programs\Python\Python39\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "C:\Users\Quang Hiep\AppData\Local\Programs\Python\Python39\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Quang Hiep\AppData\Local\Programs\Python\Python39\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Quang Hiep\AppData\Local\Programs\Python\Python39\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: Unable to locate element: //*[@id="center_column"]/div/div/div[3]/p[7]/button[@class="btn btn-default btn-twitter"]
+
+</p>
+                            </td>
+                        </tr>
+                        <tr class='warning'>
+                            <td class="col-xs-10">test_view_large_product_image</td>
+                            <td class="col-xs-1">
+                                <span class="label label-warning" style="display:block;width:40px;">Error</span>
+                            </td>
+                            <td class="col-xs-1">
+                                <button class="btn btn-default btn-xs">View</button>
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="col-xs-9" colspan="3"><p style="color:maroon;">NoSuchElementException: Message: Unable to locate element: [id="bigpic"]
+</p><p style="color:maroon;">Traceback (most recent call last):
+  File "C:\Users\Quang Hiep\Documents\Lotus Quality Assurance\Lotus Quality Assurance\LQA- Selenium_Python\Training Course _Selenium _LQA\automationPractice\testCases\package\test_productDetail.py", line 55, in test_view_large_product_image
+    productDetailPage.click_big_page()
+  File "C:\Users\Quang Hiep\Documents\Lotus Quality Assurance\Lotus Quality Assurance\LQA- Selenium_Python\Training Course _Selenium _LQA\automationPractice\pageObjects\productDetailPage.py", line 83, in click_big_page
+    self.driver.find_element_by_id(self.bigPig_id).click()
+  File "C:\Users\Quang Hiep\AppData\Local\Programs\Python\Python39\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 360, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "C:\Users\Quang Hiep\AppData\Local\Programs\Python\Python39\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Quang Hiep\AppData\Local\Programs\Python\Python39\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Quang Hiep\AppData\Local\Programs\Python\Python39\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: Unable to locate element: [id="bigpic"]
+
+</p>
+                            </td>
+                        </tr>
+                        <tr class='warning'>
+                            <td class="col-xs-10">test_write_a_comment</td>
+                            <td class="col-xs-1">
+                                <span class="label label-warning" style="display:block;width:40px;">Error</span>
+                            </td>
+                            <td class="col-xs-1">
+                                <button class="btn btn-default btn-xs">View</button>
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="col-xs-9" colspan="3"><p style="color:maroon;">NoSuchElementException: Message: Unable to locate element: [id="comment_title"]
+</p><p style="color:maroon;">Traceback (most recent call last):
+  File "C:\Users\Quang Hiep\Documents\Lotus Quality Assurance\Lotus Quality Assurance\LQA- Selenium_Python\Training Course _Selenium _LQA\automationPractice\testCases\package\test_productDetail.py", line 121, in test_write_a_comment
+    productDetailPage.leave_review('Comment', 'Good')
+  File "C:\Users\Quang Hiep\Documents\Lotus Quality Assurance\Lotus Quality Assurance\LQA- Selenium_Python\Training Course _Selenium _LQA\automationPractice\pageObjects\productDetailPage.py", line 106, in leave_review
+    self.driver.find_element_by_id(self.review_title_id).send_keys(review_title)
+  File "C:\Users\Quang Hiep\AppData\Local\Programs\Python\Python39\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 360, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "C:\Users\Quang Hiep\AppData\Local\Programs\Python\Python39\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Quang Hiep\AppData\Local\Programs\Python\Python39\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Quang Hiep\AppData\Local\Programs\Python\Python39\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: Unable to locate element: [id="comment_title"]
+
+</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                Total: 4, Pass: 0, Error: 4 -- Duration: 102.11 s
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('td').on('click', '.btn', function(e){
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                var $this = $(this);
+                var $nextRow = $this.closest('tr').next('tr');
+                $nextRow.slideToggle("fast");
+                $this.text(function(i, text){
+                    if (text === 'View') {
+                        return 'Hide';
+                    } else {
+                        return 'View';
+                    };
+                });
+            });
+        });
+    </script>
+</body>
+</html
