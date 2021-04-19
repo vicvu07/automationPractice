@@ -20,6 +20,8 @@ _____________________________________________________________ REPORT ___________
 Chạy bằng pytest (sử dụng parameterized) theo thao tác sau:
 - B1 : Sử dụng Terminal trong Pycharm để chạy lệnh
 - B2 : Chạy pytest đối với file test_productDetail_parallel bằng câu lệnh "pytest testCases/package/test_productDetail_parallel.py"
+>Output:
+
 ![image](https://user-images.githubusercontent.com/46483616/115174585-b3dc7a00-a0f3-11eb-8ab2-d8cf2cb17d14.png)
 
 3. Chạy song song 2 browsers, mỗi browser 5 testcases
@@ -27,6 +29,8 @@ Chạy bằng pytest (sử dụng parameterized) theo thao tác sau:
 Chạy bằng pytest (sử dụng parameterized) theo thao tác sau:
 - B1 : Sử dụng Terminal trong Pycharm để chạy lệnh
 - B2 : Chạy pytest đối với file test_productDetail_parallel bằng câu lệnh "pytest -n 2 testCases/package/test_productDetail_parallel.py"
+>Output:
+
 ![image](https://user-images.githubusercontent.com/46483616/115174548-a45d3100-a0f3-11eb-983a-2d77c32d8fbb.png)
 
 4. Test trên 2 máy song song sử dụng Selenium Grid
