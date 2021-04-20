@@ -37,6 +37,7 @@ class createAccountTest(unittest.TestCase):
             time.sleep(5)
             self.email = f'{library.control_excel_files.readData(createAccount_path, row, "email")}@gmail.com'
             self.firstName = library.control_excel_files.readData(createAccount_path, row, 'firstName')
+            print(self.email)
             self.lastName = library.control_excel_files.readData(createAccount_path, row, 'lastName')
             self.password = library.control_excel_files.readData(createAccount_path, row, 'password')
             self.address = library.control_excel_files.readData(createAccount_path, row, 'address')

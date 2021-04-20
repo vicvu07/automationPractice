@@ -14,7 +14,7 @@ def getColumnCount(file):
 
 
 def readData(file, rowum, column_text):
-    workbook = openpyxl.load_workbook(file)
+    workbook = openpyxl.load_workbook(file, data_only=True)
     sheet = workbook.active
     column_count = sheet.max_column
     columnno = 0
