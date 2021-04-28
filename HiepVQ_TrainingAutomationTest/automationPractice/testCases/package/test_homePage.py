@@ -50,6 +50,8 @@ class home_page(unittest.TestCase):
 
     def test_SuggestKeyWord(self):
         homePage = HomePage(self.driver)
+
+        #truyền keyword
         homePage.setSearchKeyword(self.keyword)
         time.sleep(5)
         suggestKeyWords_list = homePage.getAllSuggestKeyWords()
