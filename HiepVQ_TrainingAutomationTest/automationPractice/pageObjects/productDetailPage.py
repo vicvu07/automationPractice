@@ -1,6 +1,9 @@
 from locator.productDetailPage_locator import ProductDetailPage_locator
 from selenium.webdriver.common.action_chains import ActionChains
 import time
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class ProductDetailPage:
@@ -21,7 +24,10 @@ class ProductDetailPage:
         self.driver.find_element_by_id(self.locator.friend_email_id).send_keys(friend_email)
 
     def getProductTitle(self):
-        return self.driver.find_element_by_xpath(self.locator.productTitle_xpath).text
+        product_title = WebDriverWait(self.driver, 30).until(
+            EC.presence_of_element_located((By.XPATH,self.locator.productTitle_xpath ))
+        )
+        return product_title.text
 
     def getProductPrice(self):
         return self.driver.find_element_by_id(self.locator.productPrice_id).text

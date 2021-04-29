@@ -1,32 +1,31 @@
 class ProductDetailPage_locator:
-    productTitle_xpath = '//*[@id="center_column"]/div/div/div[3]/h1'
+    productTitle_xpath = "//h1[@itemprop='name']"
     productPrice_id = 'our_price_display'
     bigPig_id = 'bigpic'
-    image_viewLarge_xpath = '//*[@id="product"]/div[2]/div/div[1]/div/img'
-    productTitle_viewLarge_xpath = '//*[@id="product"]/div[@class="fancybox-wrap fancybox-desktop fancybox-type-image fancybox-opened"]/div/div[@class="fancybox-title fancybox-title-float-wrap"]/span'
+    image_viewLarge_xpath = "//img[@class='fancybox-image']"
+    productTitle_viewLarge_xpath = "//span[@class='child']"
     viewLarger_button_xpath = '//*[@id="view_full_size"]/span'
     close_viewLarger_xpath = '//a[@title="Close"]'
     quantity_id = 'quantity_wanted'
     add_to_cart_productDetail_xpath = '//*[@id="add_to_cart"]/button'
-    null_quantity_message_xpath = '//*[@id="product"]/div[@class="fancybox-overlay fancybox-overlay-fixed"]/div/div/div/div/p'
-    add_to_cart_successfully_message_xpath = '//*[@id="layer_cart"]/div[1]/div[1]/h2'
-    close_add_to_cart_message_xpath = '//div[@id="layer_cart"]/div[@class="clearfix"]/div[1]/span'
-    cart_button_xpath = '//*[@id="header"]/div[3]/div/div/div[3]/div/a'
-    tweet_xpath = '//*[@id="center_column"]/div/div/div[3]/p[7]/button[@class="btn btn-default btn-twitter"]'
+    null_quantity_message_xpath = "//p[@class='fancybox-error']"
+    add_to_cart_successfully_message_xpath = "//div[@id='layer_cart']//span[@title='Close window']/following-sibling::h2"
+    close_add_to_cart_message_xpath = "//div[@id='layer_cart']//span[@title='Close window']"
+    cart_button_xpath = "//b[contains(text(),'Cart')]"
+    tweet_xpath = "//button[@class='btn btn-default btn-twitter']"
     username_twitter_name = 'session[username_or_email]'
     password_twitter_name = 'session[password]'
-    login_button_twitter_xpath = '//*[@id="layers"]/div[2]/div/div/div/div/div/div[2]/div[2]/div/div[2]/div[2]'
-    tweet_a_post_xpath = '//*[@id="react-root"]/div/div/div[2]/main/div/div/div[2]/div/div/div/div[3]/div'
+    login_button_twitter_xpath = "//span[contains(text(),'Log in')]"
     leave_commnent_xpath = '//*[@id="product_comments_block_extra"]/ul/li/a'
     review_title_id = 'comment_title'
     comment_content_id = 'content'
     send_comment_id = 'submitNewMessage'
-    send_comment_message_xpath = '//*[@id="product"]/div[@class="fancybox-wrap fancybox-desktop fancybox-type-html fancybox-opened"]/div/div/div/p[1]'
+    send_comment_message_xpath = "//div[@class='fancybox-inner']/p[contains(text(),'comment')]"
     send_to_a_friend_id = 'send_friend_button'
     friend_name_id = 'friend_name'
     friend_email_id = 'friend_email'
     send_to_a_friend_button_id = 'sendEmail'
-    send_to_a_friend_message = '//*[@id="product"]/div[@class="fancybox-wrap fancybox-desktop fancybox-type-html fancybox-opened"]/div/div/div/p[1]'
+    send_to_a_friend_message = "//div[@class='fancybox-inner']/p[contains(text(),'e-mail')]"
     full_size_xpath = '//*[@id="view_full_size"]'
 
 
