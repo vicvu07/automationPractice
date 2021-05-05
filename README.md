@@ -6,6 +6,8 @@
 
 *Date : 19/04/2021
 
+*Update: 2021-05-05 17:41:02 Wednesday
+
                                     **Version Tracking**
 #### Updated at 17:30 05.05.2021
 1. Thay đổi phương thức time.sleep() thành explicit wait 
