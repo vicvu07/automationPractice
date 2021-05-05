@@ -12,40 +12,41 @@ sys.path.append(ROOT_DIR)  # Locate the root directory
 from pageObjects.homePage import HomePage
 from pageObjects.checkOutPage import CheckOutPage
 from pageObjects.loginPage import LoginPage
+from pageObjects.productDetailPage import ProductDetailPage
 
 
-class Order(unittest.TestCase):
+class TestOrder(unittest.TestCase):
     baseURL = 'http://automationpractice.com'
     emailSignIn = 'testselenium1542@gmail.com'
     passwordSignIn = '123456'
 
-    def setUp(cls):
-        cls.driver = webdriver.Chrome(executable_path=ROOT_DIR + '\drivers\chromedriver.exe')
-        cls.driver.maximize_window()
-        cls.driver.get(cls.baseURL)
-        time.sleep(5)
+    def setUp(self):
+        self.driver = webdriver.Chrome(executable_path=ROOT_DIR + '\drivers\chromedriver.exe')
+        self.driver.maximize_window()
+        self.driver.get(self.baseURL)
+        self.driver.implicitly_wait(10)
 
     def test_order_successfully(self):
         # Feature: Mua hàng; Title: Mua thành công
 
         homePage = HomePage(self.driver)
-        time.sleep(5)
         price = homePage.getPrice(1)
         homePage.add_product_and_continue(1)
 
         # Check total price off all products
         price += homePage.getPrice(2)
         homePage.add_product_and_continue(2)
+        new_price = homePage.getPrice(3)
         price += homePage.getPrice(3)
         homePage.add_product_and_checkout(3)
-        time.sleep(5)
         checkOutPage = CheckOutPage(self.driver)
         productsPrice = checkOutPage.get_products_price()
-        self.assertEqual(price, productsPrice, 'Something went wrong')
+        self.assertEqual(float(price), productsPrice, 'Something went wrong!')
 
         # Proceed to checkout
         completeMessage = checkOutPage.proceed_to_checkout(self.emailSignIn, self.passwordSignIn)
         self.assertEqual('Your order on My Store is complete.', completeMessage, "Proceed to checkout unsuccesfully")
+
     # @unittest.skip('1')
     def test_change_and_order_successfully(self):
         # Feature: Mua hàng; Title: Thay đổi thông tin mua hàng
@@ -54,13 +55,9 @@ class Order(unittest.TestCase):
         homePage = HomePage(self.driver)
         for i in range(1, 5):
             homePage.add_product_and_continue(i)
-            time.sleep(2)
-
         homePage.add_product_and_checkout(5)
-        time.sleep(2)
         checkOutPage = CheckOutPage(self.driver)
         checkOutPage.set_product_quantity(2, 3)
-        time.sleep(2)
         checkOutPage.click_delete_product(3)
         time.sleep(10)
         price = 0
@@ -71,27 +68,18 @@ class Order(unittest.TestCase):
 
         # Proceed to checkout (without agree term of service)
         checkOutPage.click_proceed_to_check_out_summary_process()
-        time.sleep(2)
         loginPage = LoginPage(self.driver)
         loginPage.sign_in(self.emailSignIn, self.passwordSignIn)
-        time.sleep(2)
         checkOutPage.click_proceed_to_check_out_address_process()
-        time.sleep(2)
         checkOutPage.click_proceed_to_check_out_shippingProcess_xpath()  # Click proceed to checkout without agree terms of service before
-        time.sleep(2)
         termsAgreementWarning = checkOutPage.get_terms_agreement_warning()
         self.assertEqual('You must agree to the terms of service before continuing.', termsAgreementWarning,
                          'Terms Agreement warning is not match!')
         checkOutPage.close_terms_agreement_warning()  # Close terms agreement warnings
-        time.sleep(1)
         checkOutPage.click_term_agreement()  # Click term agreement
-        time.sleep(2)
         checkOutPage.click_proceed_to_check_out_shippingProcess_xpath()  # Click proceed to checkout with agree terms of service before
-        time.sleep(2)
         checkOutPage.click_pay_by_bank_wire()
-        time.sleep(2)
         checkOutPage.click_confirm_my_order()
-        time.sleep(2)
         completeMessage = checkOutPage.get_complete_message()  # Get complete message
         self.assertEqual('Your order on My Store is complete.', completeMessage, "Proceed to checkout unsuccesfully")
 
@@ -101,30 +89,22 @@ class Order(unittest.TestCase):
         # time.sleep(3)
         homePage = HomePage(self.driver)
         checkOutPage = CheckOutPage(self.driver)
-        time.sleep(5)
         totalProducts = homePage.getAllProducts()
-        index = 0
-        price_percent_reduction = 0
-        completeMessage = []
-
-        for product in totalProducts:
-            index += 1
-            try:
-                price_percent_reduction = homePage.get_price_percent_reduction(index)
-            except:
-                time.sleep(1)
-            if price_percent_reduction == 20:
-                homePage.add_product_and_checkout(index)
-                checkOutPage.proceed_to_checkout(self.emailSignIn, self.passwordSignIn)
-                time.sleep(3)
-                completeMessage = checkOutPage.get_complete_message()  # Get complete message
-                break
+        # Click product which has percent reduction is 20
+        homePage.click_product_belongs_to_reduction(20)
+        # Click add to cart
+        product_detail_page = ProductDetailPage(self.driver)
+        product_detail_page.click_add_to_cart()
+        # Click Proceed to checkout
+        homePage.click_proceed_to_checkout()
+        checkOutPage.proceed_to_checkout(self.emailSignIn, self.passwordSignIn)
+        completeMessage = checkOutPage.get_complete_message()
         self.assertEqual('Your order on My Store is complete.', completeMessage,
                          "Proceed to checkout unsuccesfully")
 
-    def tearDown(cls):
+    def tearDown(sefl):
         time.sleep(2)
-        cls.driver.quit()
+        sefl.driver.quit()
 
 
 if __name__ == '__main__':

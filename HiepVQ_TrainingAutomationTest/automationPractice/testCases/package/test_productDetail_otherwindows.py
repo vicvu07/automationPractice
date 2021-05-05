@@ -71,53 +71,38 @@ class Test_product_detail(unittest.TestCase):
                 command_executor='http://10.10.31.79:4444/wd/hub',
                 desired_capabilities={'browserName': 'chrome', 'javascriptEnabled': True, 'video': True})
 
+            # Feature: Chi tiết sản phẩm; Title: Kiểm tra chức năng View Large
 
-
-
-
-        # Feature: Chi tiết sản phẩm; Title: Kiểm tra chức năng View Large
-
-        self.driver.maximize_window()
-        self.driver.get(self.baseURL)
-        self.driver.implicitly_wait(5)
         homePage = HomePage(self.driver)
         homePage.click_product_image(1)  # Click a image of the first product
-        time.sleep(2)
         productDetailPage = ProductDetailPage(self.driver)
         productDetailPage.click_big_page()
-        time.sleep(2)
         self.get_result(productDetailPage)
 
         # Feature: Chi tiết sản phẩm; Title: Kiểm tra chức năng View Large; Preconditional: Click vào button [Close] trên ảnh
 
         productDetailPage.click_close_view_larger()
         productDetailPage.click_view_larger_button()
-        time.sleep(2)
         self.get_result(productDetailPage)
 
         # Feature: Chi tiết sản phẩm; Title: Add to cart với Quantity =0
         productDetailPage.click_close_view_larger()
+        # Set quantity of product
         productDetailPage.set_product_quantity(0)
-        time.sleep(2)
         productDetailPage.click_add_to_cart()
-        time.sleep(2)
         null_quantity_message = productDetailPage.get_null_quantity_message()
         self.assertEqual('Null quantity.', null_quantity_message, "Null message is not match")
 
         # Feature: Chi tiết sản phẩm; Title: Add to cart với Quantity > 0
         productDetailPage.click_close_view_larger()
         productDetailPage.set_product_quantity(1)
-        time.sleep(5)
         product_title = productDetailPage.getProductTitle()  # Get the title of the product
         productDetailPage.click_add_to_cart()  # Adding product to cart
-        time.sleep(5)
         add_to_cart_successfully_message = productDetailPage.get_add_to_cart_successfully_message()
-        time.sleep(5)
         self.assertEqual('Product successfully added to your shopping cart', add_to_cart_successfully_message,
                          'Message is not match!')
         productDetailPage.click_close_add_to_cart_successfully_message()
         productDetailPage.click_cart_button()
-        time.sleep(2)
         checkOutPage = CheckOutPage(self.driver)
         product_title_cart = checkOutPage.get_product_title(1)
         product_quantity_cart = checkOutPage.get_product_quantity(1)
@@ -125,6 +110,7 @@ class Test_product_detail(unittest.TestCase):
         self.assertEqual('1', product_quantity_cart, 'Product price is not match!')
         time.sleep(5)
         self.driver.quit()
+
 
 # @unittest.skip('Not test this case!')
 # @parameterized.expand(['chrome', 'firefox'])

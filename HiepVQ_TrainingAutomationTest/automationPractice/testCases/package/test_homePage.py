@@ -17,7 +17,7 @@ from pageObjects.productDetailPage import ProductDetailPage
 from pageObjects.searchPage import SearchPage
 
 
-class home_page(unittest.TestCase):
+class TestHomePage(unittest.TestCase):
     baseURL = 'http://automationpractice.com/'
     # driver = webdriver.Chrome(executable_path=ROOT_DIR + '\drivers\chromedriver.exe')
     newsletteremail = 'haylam630' + str(random.randint(0, 19000)) + '@gmail.com'
@@ -26,11 +26,10 @@ class home_page(unittest.TestCase):
     keyword_fail = 'dresSSss'
     placehoder = 'Search'
 
-    @classmethod
-    def setUp(cls):
-        cls.driver = webdriver.Chrome(executable_path=ROOT_DIR + '\drivers\chromedriver.exe')
-        cls.driver.maximize_window()
-        cls.driver.get(cls.baseURL)
+    def setUp(self):
+        self.driver = webdriver.Chrome(executable_path=ROOT_DIR + '\drivers\chromedriver.exe')
+        self.driver.maximize_window()
+        self.driver.get(self.baseURL)
 
     def test_NewsletterSubmit(self):
         homePage = HomePage(self.driver)
@@ -127,10 +126,9 @@ class home_page(unittest.TestCase):
         searchNoResultMessage = searchPage.getSearchNoResultMessage()
         self.assertIn('No results were found for your search', searchNoResultMessage, 'Something went wrong!')
 
-    @classmethod
-    def tearDown(cls):
+    def tearDown(self):
         time.sleep(2)
-        cls.driver.quit()
+        self.driver.quit()
 
 
 if __name__ == '__main__':

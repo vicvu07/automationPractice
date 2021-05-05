@@ -1,4 +1,4 @@
-from locator.productDetailPage_locator import ProductDetailPage_locator
+from pageObjects.locator import ProductDetailPageLocator
 from selenium.webdriver.common.action_chains import ActionChains
 import time
 from selenium.webdriver.common.by import By
@@ -7,11 +7,11 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 class ProductDetailPage:
-    # Get locator
-    locator = ProductDetailPage_locator
 
     def __init__(self, driver):
         self.driver = driver
+        # Get locator
+        self.locator = ProductDetailPageLocator
 
     def set_product_quantity(self, quantity):
         self.driver.find_element_by_id(self.locator.quantity_id).clear()
@@ -25,7 +25,7 @@ class ProductDetailPage:
 
     def getProductTitle(self):
         product_title = WebDriverWait(self.driver, 30).until(
-            EC.presence_of_element_located((By.XPATH,self.locator.productTitle_xpath ))
+            EC.presence_of_element_located((By.XPATH, self.locator.productTitle_xpath))
         )
         return product_title.text
 
@@ -49,19 +49,34 @@ class ProductDetailPage:
         return self.driver.find_element_by_xpath(self.locator.productTitle_viewLarge_xpath).location
 
     def get_null_quantity_message(self):
-        return self.driver.find_element_by_xpath(self.locator.null_quantity_message_xpath).text
+        null_quantity_message = WebDriverWait(self.driver, 30).until(
+            EC.visibility_of_element_located((By.XPATH, self.locator.null_quantity_message_xpath))
+        )
+        return null_quantity_message.text
 
     def get_add_to_cart_successfully_message(self):
-        return self.driver.find_element_by_xpath(self.locator.add_to_cart_successfully_message_xpath).text
+        add_to_cart_successfully_message = WebDriverWait(self.driver, 30).until(
+            EC.visibility_of_element_located((By.XPATH, self.locator.add_to_cart_successfully_message_xpath))
+        )
+        return add_to_cart_successfully_message.text
 
     def get_send_review_message(self):
-        return self.driver.find_element_by_xpath(self.locator.send_comment_message_xpath).text
+        send_comment_message = WebDriverWait(self.driver, 30).until(
+            EC.visibility_of_element_located((By.XPATH, self.locator.send_comment_message_xpath))
+        )
+        return send_comment_message.text
 
     def get_send_to_a_friend_message(self):
-        return self.driver.find_element_by_xpath(self.locator.send_to_a_friend_message).text
+        send_to_a_friend_message = WebDriverWait(self.driver, 30).until(
+            EC.visibility_of_element_located((By.XPATH, self.locator.send_to_a_friend_message))
+        )
+        return send_to_a_friend_message.text
 
     def click_big_page(self):
-        self.driver.find_element_by_id(self.locator.bigPig_id).click()
+        bigPig = WebDriverWait(self.driver,30).until(
+            EC.visibility_of_element_located((By.ID, self.locator.bigPig_id))
+        )
+        bigPig.click()
 
     def click_view_larger_button(self):
         action = ActionChains(self.driver)
@@ -71,7 +86,10 @@ class ProductDetailPage:
         self.driver.find_element_by_xpath(self.locator.viewLarger_button_xpath).click()
 
     def click_close_view_larger(self):
-        self.driver.find_element_by_xpath(self.locator.close_viewLarger_xpath).click()
+        close_viewLarger =  WebDriverWait(self.driver, 30).until(
+            EC.presence_of_element_located((By.XPATH, self.locator.close_viewLarger_xpath))
+        )
+        close_viewLarger.click()
 
     def click_close_add_to_cart_successfully_message(self):
         self.driver.find_element_by_xpath(self.locator.close_add_to_cart_message_xpath).click()
@@ -80,10 +98,16 @@ class ProductDetailPage:
         self.driver.find_element_by_xpath(self.locator.cart_button_xpath).click()
 
     def click_tweet(self):
-        self.driver.find_element_by_xpath(self.locator.tweet_xpath).click()
+        tweet = WebDriverWait(self.driver, 30).until(
+            EC.visibility_of_element_located((By.XPATH, self.locator.tweet_xpath))
+        )
+        tweet.click()
 
     def leave_review(self, review_title, comment_content):
-        self.driver.find_element_by_xpath(self.locator.leave_commnent_xpath).click()
+        leave_commnent = WebDriverWait(self.driver, 30).until(
+            EC.visibility_of_element_located((By.XPATH, self.locator.leave_commnent_xpath))
+        )
+        leave_commnent.click()
         self.driver.find_element_by_id(self.locator.review_title_id).send_keys(review_title)
         self.driver.find_element_by_id(self.locator.comment_content_id).send_keys(comment_content)
         self.driver.find_element_by_id(self.locator.send_comment_id).click()
@@ -93,9 +117,12 @@ class ProductDetailPage:
 
     def check_image_view_large_is_displayed(self):
         try:
-            return self.driver.find_element_by_xpath(self.locator.image_viewLarge_xpath).is_displayed()
+            image_viewLarge = WebDriverWait(self.driver, 30).until(
+                EC.presence_of_element_located((By.XPATH, self.locator.image_viewLarge_xpath))
+            )
+            return image_viewLarge.is_displayed()
         except:
-            return False
+            assert False
 
     def check_product_title_view_large_is_displayed(self):
         try:
@@ -105,12 +132,18 @@ class ProductDetailPage:
 
     def click_add_to_cart(self):
         action = ActionChains(self.driver)
-        add_to_cart_button = self.driver.find_element_by_xpath(self.locator.add_to_cart_productDetail_xpath)
+
+        add_to_cart_button = WebDriverWait(self.driver, 30).until(
+            EC.presence_of_element_located((By.XPATH, self.locator.add_to_cart_productDetail_xpath))
+        )
         action.move_to_element(add_to_cart_button).click().perform()
         # self.driver.find_element_by_xpath(self.add_to_cart_productDetail_xpath).click()
 
     def click_send_to_a_friend(self):
-        self.driver.find_element_by_id(self.locator.send_to_a_friend_id).click()
+        send_to_a_friend = WebDriverWait(self.driver, 30).until(
+            EC.visibility_of_element_located((By.ID, self.locator.send_to_a_friend_id))
+        )
+        send_to_a_friend.click()
 
     def send_to_a_friend(self):
         self.driver.find_element_by_id(self.locator.send_to_a_friend_button_id).click()

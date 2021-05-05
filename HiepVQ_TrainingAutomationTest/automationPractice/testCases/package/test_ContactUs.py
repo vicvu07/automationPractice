@@ -14,7 +14,7 @@ from pageObjects.homePage import HomePage
 
 
 
-class contact_us(unittest.TestCase):
+class TestContactUs(unittest.TestCase):
     baseURL = 'http://automationpractice.com/'
 
     email = 'haylam630@gmail.com'
@@ -22,7 +22,7 @@ class contact_us(unittest.TestCase):
     orderReference = 'Order Reference'
     message = 'test'
     allertSucess = 'Your message has been successfully sent to our team.'
-    file = r"C:\Users\Quang Hiep\Documents\Lotus Quality Assurance\Lotus Quality Assurance\LQA- Selenium_Python\Training Course _Selenium _LQA\automationPractice\files\data.txt"
+    file = ROOT_DIR + r"\files\data.txt"
 
     # allertSuccess = 'Newsletter : You have successfully subscribed to this newsletter.'
 
@@ -43,15 +43,18 @@ class contact_us(unittest.TestCase):
         self.driver.get(self.baseURL)
         homePage = HomePage(self.driver)
         contactUs = ContactUsPage(self.driver)
+        # Click Contact Us button
         homePage.clickContactUs()
+        # Select subject heading in Contact Us Page
         contactUs.selectSubjectHeading(self.subjectHeading)
+        # Typing email address
         contactUs.setEmailAdress(self.email)
+        # Typing Order Reference
         contactUs.setOrderReference(self.orderReference)
+        # Typing message
         contactUs.setMessage(self.message)
-        contactUs.attachFile(self.file)
-        time.sleep(2)
-        contactUs.clickSend()
-        time.sleep(5)
+        # Attach File
+        contactUs.attach_file_and_send(self.file)
         self.assertEqual(contactUs.getAllertSucess(), self.allertSucess, "Submit Message in Contact us unsucessfully!")
 
     # def test_ContactUs(self):
@@ -65,6 +68,7 @@ class contact_us(unittest.TestCase):
     #     t1.join()
     #     # t2.join()
 
-
+    def tearDown(self):
+       self.driver.quit()
 if __name__ == '__main__':
     unittest.main()

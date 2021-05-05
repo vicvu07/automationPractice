@@ -15,7 +15,7 @@ from pageObjects.checkOutPage import CheckOutPage
 from pageObjects.loginPage import LoginPage
 
 
-class product_detail(unittest.TestCase):
+class TestProductDetail(unittest.TestCase):
     baseURL = 'http://automationpractice.com/'
     # driver = webdriver.Chrome(executable_path=ROOT_DIR + '\drivers\chromedriver.exe')
 
@@ -50,25 +50,21 @@ class product_detail(unittest.TestCase):
 
         homePage = HomePage(self.driver)
         homePage.click_product_image(1)  # Click a image of the first product
-        time.sleep(2)
         productDetailPage = ProductDetailPage(self.driver)
         productDetailPage.click_big_page()
-        time.sleep(2)
         self.get_result(productDetailPage)
 
         # Feature: Chi tiết sản phẩm; Title: Kiểm tra chức năng View Large; Preconditional: Click vào button [Close] trên ảnh
 
         productDetailPage.click_close_view_larger()
         productDetailPage.click_view_larger_button()
-        time.sleep(2)
         self.get_result(productDetailPage)
 
         # Feature: Chi tiết sản phẩm; Title: Add to cart với Quantity =0
         productDetailPage.click_close_view_larger()
+        #Set quantity of product
         productDetailPage.set_product_quantity(0)
-        time.sleep(2)
         productDetailPage.click_add_to_cart()
-        time.sleep(2)
         null_quantity_message = productDetailPage.get_null_quantity_message()
         self.assertEqual('Null quantity.', null_quantity_message, "Null message is not match")
 
@@ -77,13 +73,11 @@ class product_detail(unittest.TestCase):
         productDetailPage.set_product_quantity(1)
         product_title = productDetailPage.getProductTitle()  # Get the title of the product
         productDetailPage.click_add_to_cart()  # Adding product to cart
-        time.sleep(2)
         add_to_cart_successfully_message = productDetailPage.get_add_to_cart_successfully_message()
         self.assertEqual('Product successfully added to your shopping cart', add_to_cart_successfully_message,
                          'Message is not match!')
         productDetailPage.click_close_add_to_cart_successfully_message()
         productDetailPage.click_cart_button()
-        time.sleep(2)
         checkOutPage = CheckOutPage(self.driver)
         product_title_cart = checkOutPage.get_product_title(1)
         product_quantity_cart = checkOutPage.get_product_quantity(1)
@@ -95,12 +89,11 @@ class product_detail(unittest.TestCase):
         # Feature: Chi tiết sản phẩm; Title: Share to TWitter
         homePage = HomePage(self.driver)
         homePage.click_product_image(1)
-        time.sleep(5)
         productDetailPage = ProductDetailPage(self.driver)
         productDetailPage.click_tweet()
         time.sleep(5)
         window_after = self.driver.window_handles[1]
-        self.driver.switch_to_window(window_after)
+        self.driver.switch_to.window(window_after)
         self.assertTrue(productDetailPage.login_twitter('vicvu8', '123456aA@'))
 
 
@@ -111,16 +104,13 @@ class product_detail(unittest.TestCase):
         passwordSignIn = '123456'
         homePage = HomePage(self.driver)
         homePage.clickSignIn()
-        time.sleep(3)
         loginPage = LoginPage(self.driver)
         loginPage.sign_in(emailSignIn, passwordSignIn)
-        time.sleep(3)
+        self.driver.implicitly_wait(10)
         self.driver.get(self.baseURL)
         homePage.click_product_image(1)
-        time.sleep(3)
         productDetailPage = ProductDetailPage(self.driver)
         productDetailPage.leave_review('Comment', 'Good')
-        time.sleep(7)
         send_review_message = productDetailPage.get_send_review_message()
         self.assertEqual('Your comment has been added and will be available once approved by a moderator', send_review_message, "Send review unsuccessfully")
 
@@ -129,13 +119,11 @@ class product_detail(unittest.TestCase):
     # Feature: Chi tiết sản phẩm; Title:Send to friend
         homePage = HomePage(self.driver)
         homePage.click_product_image(1)
-        time.sleep(5)
         productDetailPage = ProductDetailPage(self.driver)
         productDetailPage.click_send_to_a_friend()
         productDetailPage.set_friend_name('Alexander')
         productDetailPage.set_friend_email('selenium@gmail.com')
         productDetailPage.send_to_a_friend()
-        time.sleep(5)
         send_to_a_friend_message = productDetailPage.get_send_to_a_friend_message()
         self.assertEqual('Your e-mail has been sent successfully', send_to_a_friend_message, "Send to a friend unsuccessfully!")
 

@@ -7,11 +7,11 @@ PRV1_DIR = os.path.dirname(os.path.abspath(__file__))  # cd testSuites
 PRV2_DIR = os.path.dirname(os.path.abspath(PRV1_DIR))  # cd testCases
 ROOT_DIR = os.path.dirname(os.path.abspath(PRV2_DIR))  # cd automationPractice
 
-createAccountTest_DIR = 'testCases.package.test_CreateAccount.createAccountTest'
-home_page_DIR = 'testCases.package.test_homePage.home_page'
-contactUs_DIR = 'testCases.package.test_ContactUs.contact_us'
-order_DIR = 'testCases.package.test_Order.Order'
-productDetail_DIR = 'testCases.package.test_productDetail.product_detail'
+createAccountTest_DIR = 'testCases.package.test_CreateAccount.TestCreateAccount'
+home_page_DIR = 'testCases.package.test_homePage.TestHomePage'
+contactUs_DIR = 'testCases.package.test_ContactUs.TestContactUs'
+order_DIR = 'testCases.package.test_Order.TestOrder'
+productDetail_DIR = 'testCases.package.test_productDetail.TestProductDetail'
 
 # Locate testcase
 
@@ -69,7 +69,7 @@ tc14 = f'{productDetail_DIR}.test_send_to_a_friend'
 allTCs = unittest.TestLoader().loadTestsFromNames([tc1, tc2, tc3, tc4, tc5, tc6a, tc6b
                                                       , tc6d, tc7, tc8, tc9, tc10, tc11, tc12, tc13, tc14])
 TestCases = unittest.TestSuite(allTCs)
-runner = HTMLTestRunner(output=ROOT_DIR + '/reports', combine_reports=True,
+runner = HTMLTestRunner(output=ROOT_DIR + '/reports', combine_reports=True, report_name="Automation_Report",
                         report_title='Testing Website Result')
 
 runner.run(TestCases)

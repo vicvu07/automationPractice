@@ -1,16 +1,21 @@
 from selenium.webdriver.support.ui import Select
-from locator.createAccount_locator import CreateAccount_locator
-
+from pageObjects.locator import CreateAccountLocator
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 class CreateAccountPage:
-    # Get locator
-    locator = CreateAccount_locator
 
     def __init__(self, driver):
         self.driver = driver
+        # Get locator
+        self.locator = CreateAccountLocator
 
     def setFirstName(self, firstName):
-        self.driver.find_element_by_id(self.locator.firstName_id).send_keys(firstName)
+        first_name = WebDriverWait(self.driver, 30).until(
+            EC.presence_of_element_located((By.ID, self.locator.firstName_id))
+        )
+        first_name.send_keys(firstName)
 
     def setLastName(self, lastName):
         self.driver.find_element_by_id(self.locator.lastName_id).send_keys(lastName)
@@ -38,3 +43,6 @@ class CreateAccountPage:
 
     def clickRegister(self):
         self.driver.find_element_by_id(self.locator.register_id).click()
+
+    def log_out(self):
+        self.driver.find_element_by_xpath(self.locator.logout_xpath).click()

@@ -1,12 +1,43 @@
-# from selenium.webdriver.common.by import By
-# from selenium.webdriver.support.ui import WebDriverWait
-# from selenium.webdriver.support import expected_conditions as EC
-# class Base_page:
-#     def __init__(self, driver):
-#         self.driver = driver
-#     def getSearchResultMessage(self,second, find_element_method, locator_element):
-#         find_element_method =
-#         search_result_message = WebDriverWait(self.driver, second).until(
-#             EC.presence_of_element_located((By.XPATH, self.locator.searchResultMessage_xpath))
-#         )
-#         return search_result_message.text
+import openpyxl
+
+
+class ControlExelFile:
+
+    def getRowCount(file):
+        workbook = openpyxl.load_workbook(file)
+        sheet = workbook.active
+        return (sheet.max_row)
+
+    def getColumnCount(file):
+        workbook = openpyxl.load_workbook(file)
+        sheet = workbook.active
+        return (sheet.max_column)
+
+    def readData(file, rowum, column_text):
+        workbook = openpyxl.load_workbook(file, data_only=True)
+        sheet = workbook.active
+        column_count = sheet.max_column
+        columnno = 0
+        for i in range(1, column_count + 1):
+            heading = sheet.cell(row=1, column=i).value.lower()
+            if heading == column_text.lower():
+                columnno = i
+                break
+        try:
+            value = sheet.cell(row=rowum, column=columnno).value
+            return value
+        except:
+            return 'Null'
+
+    def writeData(file, rownum, column_text, data):
+        workbook = openpyxl.load_workbook(file)
+        sheet = workbook.active
+        column_count = sheet.max_column
+        columnno = 0
+        for i in range(1, column_count + 1):
+            heading = sheet.cell(row=1, column=i).value.lower()
+            if heading == column_text.lower():
+                columnno = i
+                break
+        sheet.cell(row=rownum, column=columnno).value = data
+        workbook.save(file)

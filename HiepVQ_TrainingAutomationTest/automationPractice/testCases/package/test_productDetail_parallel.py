@@ -1,6 +1,6 @@
-#Run pytest in Terminal
-#cd testCases/package
-#pytest -n 2 test_productDetail_parallel.py
+# Run pytest in Terminal
+# cd testCases/package
+# pytest -n 2 test_productDetail_parallel.py
 
 
 import unittest
@@ -23,6 +23,7 @@ from parameterized import parameterized, parameterized_class
 
 class Test_product_detail(unittest.TestCase):
     baseURL = 'http://automationpractice.com/'
+
     # driver = webdriver.Chrome(executable_path=ROOT_DIR + '\drivers\chromedriver.exe')
 
     # @classmethod
@@ -30,7 +31,6 @@ class Test_product_detail(unittest.TestCase):
     #     cls.driver = webdriver.Chrome(executable_path=ROOT_DIR + '\drivers\chromedriver.exe')
     #     cls.driver.maximize_window()
     #     cls.driver.get(cls.baseURL)
-
 
     def get_result(self, productDetailPage):
         # Kiểm tra ảnh phóng to và tên sản phẩm hiển thị dưới ảnh
@@ -55,9 +55,9 @@ class Test_product_detail(unittest.TestCase):
 
     #
     # # @unittest.skip('Not test this case!')
-    @parameterized.expand(['firefox','chrome'])
+    @parameterized.expand(['firefox', 'chrome'])
     def test_view_large_product_image(self, browser):
-        #Thiết lập trình duyệt Chrome, Firefox
+        # Thiết lập trình duyệt Chrome, Firefox
         if browser == 'chrome':
             self.driver = webdriver.Chrome(executable_path=r'C:\Drivers\chromedriver_win32\chromedriver.exe')
             self.driver.maximize_window()
@@ -70,30 +70,25 @@ class Test_product_detail(unittest.TestCase):
             self.driver.get(self.baseURL)
             self.driver.implicitly_wait(5)
 
-
-        # Feature: Chi tiết sản phẩm; Title: Kiểm tra chức năng View Large
+            # Feature: Chi tiết sản phẩm; Title: Kiểm tra chức năng View Large
 
         homePage = HomePage(self.driver)
         homePage.click_product_image(1)  # Click a image of the first product
-        time.sleep(2)
         productDetailPage = ProductDetailPage(self.driver)
         productDetailPage.click_big_page()
-        time.sleep(2)
         self.get_result(productDetailPage)
 
         # Feature: Chi tiết sản phẩm; Title: Kiểm tra chức năng View Large; Preconditional: Click vào button [Close] trên ảnh
 
         productDetailPage.click_close_view_larger()
         productDetailPage.click_view_larger_button()
-        time.sleep(2)
         self.get_result(productDetailPage)
 
         # Feature: Chi tiết sản phẩm; Title: Add to cart với Quantity =0
         productDetailPage.click_close_view_larger()
+        # Set quantity of product
         productDetailPage.set_product_quantity(0)
-        time.sleep(2)
         productDetailPage.click_add_to_cart()
-        time.sleep(2)
         null_quantity_message = productDetailPage.get_null_quantity_message()
         self.assertEqual('Null quantity.', null_quantity_message, "Null message is not match")
 
@@ -102,18 +97,16 @@ class Test_product_detail(unittest.TestCase):
         productDetailPage.set_product_quantity(1)
         product_title = productDetailPage.getProductTitle()  # Get the title of the product
         productDetailPage.click_add_to_cart()  # Adding product to cart
-        time.sleep(2)
         add_to_cart_successfully_message = productDetailPage.get_add_to_cart_successfully_message()
-        time.sleep(2)
         self.assertEqual('Product successfully added to your shopping cart', add_to_cart_successfully_message,
                          'Message is not match!')
         productDetailPage.click_close_add_to_cart_successfully_message()
         productDetailPage.click_cart_button()
-        time.sleep(2)
         checkOutPage = CheckOutPage(self.driver)
         product_title_cart = checkOutPage.get_product_title(1)
         product_quantity_cart = checkOutPage.get_product_quantity(1)
         self.assertEqual(product_title, product_title_cart, "Product title is not match!")
+
         self.assertEqual('1', product_quantity_cart, 'Product price is not match!')
         time.sleep(5)
         self.driver.quit()
@@ -134,7 +127,7 @@ class Test_product_detail(unittest.TestCase):
             self.driver.get(self.baseURL)
             self.driver.implicitly_wait(5)
 
-        # Feature: Chi tiết sản phẩm; Title: Share to TWitter
+            # Feature: Chi tiết sản phẩm; Title: Share to TWitter
         homePage = HomePage(self.driver)
         homePage.click_product_image(1)
         productDetailPage = ProductDetailPage(self.driver)
@@ -143,77 +136,75 @@ class Test_product_detail(unittest.TestCase):
         window_after = self.driver.window_handles[1]
         self.driver.switch_to.window(window_after)
         self.assertTrue(productDetailPage.login_twitter('vicvu8', '123456aA@'))
+
         time.sleep(5)
         self.driver.quit()
 
 
-    # @unittest.skip('Not test this case!')
-    # @parameterized.expand(['chrome', 'firefox'])
-    # def test_write_a_comment(self,browser):
-    #     # Thiết lập trình duyệt Chrome, Firefox
-    #     if browser == 'chrome':
-    #         self.driver = webdriver.Chrome(executable_path=r'C:\Drivers\chromedriver_win32\chromedriver.exe')
-    #         self.driver.maximize_window()
-    #         self.driver.get(self.baseURL)
-    #         self.driver.implicitly_wait(5)
-    #
-    #     else:
-    #         self.driver = webdriver.Firefox(executable_path=r'C:\Drivers\geckodriver-v0.29.0-win64\geckodriver.exe')
-    #         self.driver.maximize_window()
-    #         self.driver.get(self.baseURL)
-    #         self.driver.implicitly_wait(5)
-    #     # Feature: Chi tiết sản phẩm; Title: Write a comment
-    #     emailSignIn = 'testselenium1542@gmail.com'
-    #     passwordSignIn = '123456'
-    #     homePage = HomePage(self.driver)
-    #     homePage.clickSignIn()
-    #     time.sleep(3)
-    #     loginPage = LoginPage(self.driver)
-    #     loginPage.sign_in(emailSignIn, passwordSignIn)
-    #     time.sleep(3)
-    #     self.driver.get(self.baseURL)
-    #     homePage.click_product_image(1)
-    #     time.sleep(3)
-    #     productDetailPage = ProductDetailPage(self.driver)
-    #     productDetailPage.leave_review('Comment', 'Good')
-    #     time.sleep(7)
-    #     send_review_message = productDetailPage.get_send_review_message()
-    #     self.assertEqual('Your comment has been added and will be available once approved by a moderator', send_review_message, "Send review unsuccessfully")
-    #
-    # # @unittest.skip('Not test this case!')
-    # @parameterized.expand(['chrome', 'firefox'])
-    # def test_send_to_a_friend(self,browser):
-    #     # Thiết lập trình duyệt Chrome, Firefox
-    #     if browser == 'chrome':
-    #         self.driver = webdriver.Chrome(executable_path=r'C:\Drivers\chromedriver_win32\chromedriver.exe')
-    #         self.driver.maximize_window()
-    #         self.driver.get(self.baseURL)
-    #         self.driver.implicitly_wait(5)
-    #
-    #     else:
-    #         self.driver = webdriver.Firefox(executable_path=r'C:\Drivers\geckodriver-v0.29.0-win64\geckodriver.exe')
-    #         self.driver.maximize_window()
-    #         self.driver.get(self.baseURL)
-    #         self.driver.implicitly_wait(5)
-    # # Feature: Chi tiết sản phẩm; Title:Send to friend
-    #     homePage = HomePage(self.driver)
-    #     homePage.click_product_image(1)
-    #     productDetailPage = ProductDetailPage(self.driver)
-    #     productDetailPage.click_send_to_a_friend()
-    #     productDetailPage.set_friend_name('Alexander')
-    #     productDetailPage.set_friend_email('selenium@gmail.com')
-    #     productDetailPage.send_to_a_friend()
-    #     time.sleep(5)
-    #     send_to_a_friend_message = productDetailPage.get_send_to_a_friend_message()
-    #     self.assertEqual('Your e-mail has been sent successfully', send_to_a_friend_message, "Send to a friend unsuccessfully!")
+# @unittest.skip('Not test this case!')
+# @parameterized.expand(['chrome', 'firefox'])
+# def test_write_a_comment(self,browser):
+#     # Thiết lập trình duyệt Chrome, Firefox
+#     if browser == 'chrome':
+#         self.driver = webdriver.Chrome(executable_path=r'C:\Drivers\chromedriver_win32\chromedriver.exe')
+#         self.driver.maximize_window()
+#         self.driver.get(self.baseURL)
+#         self.driver.implicitly_wait(5)
+#
+#     else:
+#         self.driver = webdriver.Firefox(executable_path=r'C:\Drivers\geckodriver-v0.29.0-win64\geckodriver.exe')
+#         self.driver.maximize_window()
+#         self.driver.get(self.baseURL)
+#         self.driver.implicitly_wait(5)
+#     # Feature: Chi tiết sản phẩm; Title: Write a comment
+#     emailSignIn = 'testselenium1542@gmail.com'
+#     passwordSignIn = '123456'
+#     homePage = HomePage(self.driver)
+#     homePage.clickSignIn()
+#     time.sleep(3)
+#     loginPage = LoginPage(self.driver)
+#     loginPage.sign_in(emailSignIn, passwordSignIn)
+#     time.sleep(3)
+#     self.driver.get(self.baseURL)
+#     homePage.click_product_image(1)
+#     time.sleep(3)
+#     productDetailPage = ProductDetailPage(self.driver)
+#     productDetailPage.leave_review('Comment', 'Good')
+#     time.sleep(7)
+#     send_review_message = productDetailPage.get_send_review_message()
+#     self.assertEqual('Your comment has been added and will be available once approved by a moderator', send_review_message, "Send review unsuccessfully")
+#
+# # @unittest.skip('Not test this case!')
+# @parameterized.expand(['chrome', 'firefox'])
+# def test_send_to_a_friend(self,browser):
+#     # Thiết lập trình duyệt Chrome, Firefox
+#     if browser == 'chrome':
+#         self.driver = webdriver.Chrome(executable_path=r'C:\Drivers\chromedriver_win32\chromedriver.exe')
+#         self.driver.maximize_window()
+#         self.driver.get(self.baseURL)
+#         self.driver.implicitly_wait(5)
+#
+#     else:
+#         self.driver = webdriver.Firefox(executable_path=r'C:\Drivers\geckodriver-v0.29.0-win64\geckodriver.exe')
+#         self.driver.maximize_window()
+#         self.driver.get(self.baseURL)
+#         self.driver.implicitly_wait(5)
+# # Feature: Chi tiết sản phẩm; Title:Send to friend
+#     homePage = HomePage(self.driver)
+#     homePage.click_product_image(1)
+#     productDetailPage = ProductDetailPage(self.driver)
+#     productDetailPage.click_send_to_a_friend()
+#     productDetailPage.set_friend_name('Alexander')
+#     productDetailPage.set_friend_email('selenium@gmail.com')
+#     productDetailPage.send_to_a_friend()
+#     time.sleep(5)
+#     send_to_a_friend_message = productDetailPage.get_send_to_a_friend_message()
+#     self.assertEqual('Your e-mail has been sent successfully', send_to_a_friend_message, "Send to a friend unsuccessfully!")
 
-
-
-
-    # @classmethod
-    # def tearDown(cls):
-    #     time.sleep(2)
-    #     cls.driver.quit()
+# @classmethod
+# def tearDown(cls):
+#     time.sleep(2)
+#     cls.driver.quit()
 
 
 if __name__ == '__main__':
