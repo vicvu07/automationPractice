@@ -7,12 +7,10 @@
 *Date : 19/04/2021
 
                                     **Version Tracking**
-```python
-Updated at 17:30 05.05.2021
-I. Thay đổi phương thức time.sleep() thành explicit wait 
-II. Tách các locator ra 1 file riêng
-III. Thay đổi đường dẫn của các element
-```
+#### Updated at 17:30 05.05.2021
+1. Thay đổi phương thức time.sleep() thành explicit wait 
+2. Tách các locator ra 1 file riêng
+3. Thay đổi đường dẫn của các element
 
                                        **Report Training automation testing**
 
