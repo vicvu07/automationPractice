@@ -1,12 +1,13 @@
 import unittest
 import os
 from HtmlTestRunner import HTMLTestRunner
+import sys
 
 # Locate the Roor directory of project
 PRV1_DIR = os.path.dirname(os.path.abspath(__file__))  # cd testSuites
 PRV2_DIR = os.path.dirname(os.path.abspath(PRV1_DIR))  # cd testCases
 ROOT_DIR = os.path.dirname(os.path.abspath(PRV2_DIR))  # cd automationPractice
-
+sys.path.append(ROOT_DIR)
 createAccountTest_DIR = 'testCases.package.test_CreateAccount.TestCreateAccount'
 home_page_DIR = 'testCases.package.test_homePage.TestHomePage'
 contactUs_DIR = 'testCases.package.test_ContactUs.TestContactUs'
@@ -57,7 +58,7 @@ tc10 = f'{order_DIR}.test_promotion_product'
 # /Chi tiết sản phẩm
 tc11 = f'{productDetail_DIR}.test_view_large_product_image'
 
-# /Chi tiết sản phẩm	Share to TWitter
+# /Chi tiết sản phẩm	Share to Twitter
 tc12 = f'{productDetail_DIR}.test_share_to_twitter'
 
 # /Chi tiết sản phẩm	Write a comment
