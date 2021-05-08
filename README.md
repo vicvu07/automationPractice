@@ -11,8 +11,10 @@
                                     **Version Tracking**
 #### Updated at 17:30 05.05.2021
 1. Thay đổi phương thức time.sleep() thành explicit wait 
-2. Tách các locator ra 1 file riêng
-3. Thay đổi đường dẫn của các element
+2. Tách các locator ra 1 file riêng:
+```HiepVQ_TrainingAutomationTest/automationPractice/pageObjects/locator.py```
+4. Thay đổi đường dẫn của các element:
+```https://github.com/vicvu07/automationPractice/blob/main/HiepVQ_TrainingAutomationTest/automationPractice/pageObjects/locator.py```
 
                                        **Report Training automation testing**
 
